@@ -48,47 +48,8 @@ export const ReportsPage: React.FC = () => {
             className="px-4 py-2 bg-[#FF8A00] hover:bg-[#E06D00] text-black font-bold text-xs rounded-lg flex items-center gap-1.5 transition-colors shadow-[0_0_12px_rgba(255,138,0,0.3)]"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Download 10-Page PDF</span>
+            <span>Download Audit PDF</span>
           </a>
-        </div>
-      </div>
-
-      {/* Featured Executive Benchmark Card */}
-      <div className="bg-[#171717] border border-[#FF8A00]/30 rounded-xl p-5 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF8A00]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 bg-[#FF8A00]/20 border border-[#FF8A00]/40 text-[#FF8A00] text-[10px] font-mono font-bold uppercase rounded">
-                Official Benchmark (10 Pages)
-              </span>
-              <span className="px-2 py-0.5 bg-[#00C784]/20 border border-[#00C784]/40 text-[#00C784] text-[10px] font-mono font-bold uppercase rounded">
-                60 Permutations
-              </span>
-            </div>
-            <h2 className="text-base font-bold text-white">
-              Frontier LLM Comparative Security Benchmark: Claude 3.7 Sonnet vs. Google Gemini 2.5 Flash
-            </h2>
-            <p className="text-xs text-[#999999] max-w-3xl leading-relaxed">
-              Exhaustive 10-page enterprise audit report comparing adversarial red-team resilience, OWASP LLM 2026 &amp; ASI 2026 threat matrices, ReAct tool execution safety, Human-in-the-Loop gates, Model Context Protocol (MCP) path traversal defense, and Wazuh SIEM telemetry correlation.
-            </p>
-            <div className="flex flex-wrap gap-4 pt-1 text-[11px] font-mono text-[#888888]">
-              <div>• <b>Scope:</b> 10 Risks (LLM01-10, ASI01-06)</div>
-              <div>• <b>Tests:</b> 30 Scenarios / 60 Executions</div>
-              <div>• <b>Mitigation Drop:</b> 82.4% Avg Risk Reduction</div>
-              <div>• <b>Format:</b> Print-Ready Vector PDF</div>
-            </div>
-          </div>
-          <div className="shrink-0">
-            <a
-              href="/api/reports/claude-vs-gemini-pdf"
-              download="Claude_vs_Gemini_Security_Benchmark_Report.pdf"
-              className="px-5 py-3 bg-[#00C784] hover:bg-[#00B075] text-black font-extrabold text-xs rounded-lg flex items-center gap-2 transition-all shadow-[0_0_16px_rgba(0,199,132,0.3)] hover:scale-[1.02]"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download Executive PDF (10 Pages)</span>
-            </a>
-          </div>
         </div>
       </div>
 
@@ -137,4 +98,3 @@ export const ReportsPage: React.FC = () => {
     </div>
   );
 };
-
