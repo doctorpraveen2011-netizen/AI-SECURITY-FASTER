@@ -1,0 +1,2 @@
+Enterprise Sandbox Policy v2.0
+Restricted access. All operations are logged.

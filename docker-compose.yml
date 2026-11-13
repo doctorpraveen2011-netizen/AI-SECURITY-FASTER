@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ai_security_faster_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_URL=sqlite:///./ai_security_faster.db
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - WAZUH_API_URL=${WAZUH_API_URL:-https://localhost:55000}
+      - WAZUH_USER=${WAZUH_USER:-wazuh}
+      - WAZUH_PASSWORD=${WAZUH_PASSWORD:-wazuh_password}
+      - WAZUH_SIMULATED_MODE=${WAZUH_SIMULATED_MODE:-true}
+    volumes:
+      - backend_data:/app/data
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ai_security_faster_frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  backend_data:
+

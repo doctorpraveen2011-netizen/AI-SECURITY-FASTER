@@ -1,0 +1,11 @@
+{
+  "status": "HEALTHY",
+  "uptime": "99.98%",
+  "active_guards": [
+    "DualBoundary",
+    "CanaryScanner",
+    "SSRFGate",
+    "PathSanitizer",
+    "HITLGate"
+  ]
+}
