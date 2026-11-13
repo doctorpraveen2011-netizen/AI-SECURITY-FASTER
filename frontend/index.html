@@ -8,6 +8,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: {
+                main: "#080808",
+                secondary: "#111111",
+                card: "#171717",
+                cardHover: "#1f1f1f"
+              },
+              cyber: {
+                orange: "#FF8A00",
+                orangeLight: "#FFB347",
+                green: "#00C784",
+                red: "#FF4545",
+                yellow: "#FFC247",
+                purple: "#A855F7"
+              }
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body class="bg-[#080808] text-white antialiased selection:bg-[#FF8A00] selection:text-black">
     <div id="root"></div>
