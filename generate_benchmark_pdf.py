@@ -1303,3 +1303,4 @@ def create_benchmark_pdf(filename: str = "Claude_vs_Gemini_Security_Benchmark_Re
 if __name__ == "__main__":
     out_file = sys.argv[1] if len(sys.argv) > 1 else "Claude_vs_Gemini_Security_Benchmark_Report.pdf"
     create_benchmark_pdf(out_file)
+

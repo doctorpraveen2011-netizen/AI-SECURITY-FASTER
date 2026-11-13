@@ -74,9 +74,9 @@ app.include_router(wazuh_router)
 app.include_router(reports_router)
 app.include_router(audit_router)
 
+# Health checks
 @app.get("/api/health")
 @app.get("/health")
-@app.get("/")
 def healthcheck():
     return {
         "status": "HEALTHY",
@@ -84,6 +84,35 @@ def healthcheck():
         "version": settings.VERSION,
         "environment": settings.ENVIRONMENT
     }
+
+# SPA Frontend Static Mounting (Enables running complete UI from backend port 8000)
+import os
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../frontend/dist"))
+if os.path.exists(frontend_dist):
+    assets_dir = os.path.join(frontend_dist, "assets")
+    if os.path.exists(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="static_assets")
+
+    @app.get("/")
+    async def serve_root():
+        return FileResponse(os.path.join(frontend_dist, "index.html"))
+
+    @app.get("/{full_path:path}")
+    async def serve_spa_frontend(full_path: str):
+        if full_path.startswith("api/") or full_path.startswith("docs") or full_path.startswith("openapi") or full_path.startswith("ws") or full_path == "health":
+            from fastapi import HTTPException
+            raise HTTPException(status_code=404, detail="Not Found")
+        file_path = os.path.join(frontend_dist, full_path)
+        if os.path.isfile(file_path):
+            return FileResponse(file_path)
+        return FileResponse(os.path.join(frontend_dist, "index.html"))
+else:
+    @app.get("/")
+    def root_health():
+        return healthcheck()
 
 # Live WebSocket Hub
 class ConnectionManager:

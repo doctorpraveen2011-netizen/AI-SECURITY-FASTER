@@ -654,3 +654,4 @@ def generate_pdf_bytes() -> bytes:
     build_pdf_stream(buffer)
     buffer.seek(0)
     return buffer.getvalue()
+
